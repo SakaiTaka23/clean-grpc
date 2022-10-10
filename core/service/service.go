@@ -9,7 +9,7 @@ type ArticleService struct {
 	repo ports.SecondaryPorts
 }
 
-func NewArticleService() ports.PrimaryPorts {
+func NewArticleService() *ArticleService {
 	return &ArticleService{}
 }
 
