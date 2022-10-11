@@ -10,8 +10,8 @@ type interactor struct {
 	repo repository.Article
 }
 
-func New() inputport.Article {
-	return &interactor{}
+func New(repo repository.Article) inputport.Article {
+	return &interactor{repo: repo}
 }
 
 func (a *interactor) Create(article entities.Article) string {
