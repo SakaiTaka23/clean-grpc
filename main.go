@@ -17,6 +17,6 @@ func main() {
 	articleHandler := injector.InjectArticleController()
 	s := server.Create(articleHandler)
 	if err := s.Serve(lis); err != nil {
-		log.Println(err)
+		log.Panicln(err)
 	}
 }

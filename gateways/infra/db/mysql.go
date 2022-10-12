@@ -1,23 +1,26 @@
 package db
 
 import (
-	"os"
+	"hex-grpc/entities"
 
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
 func Connect() *gorm.DB {
-	user := os.Getenv("DB_USERNAME")
-	pass := os.Getenv("DB_PASSWORD")
-	protocol := os.Getenv("DB_PROTOCOL")
-	dbname := os.Getenv("DB_DATABASE")
+	// user := os.Getenv("DB_USERNAME")
+	// pass := os.Getenv("DB_PASSWORD")
+	// protocol := os.Getenv("DB_PROTOCOL")
+	// dbname := os.Getenv("DB_DATABASE")
 
-	dsn := user + ":" + pass + "@" + protocol + "/" + dbname + "?charset=utf8&parseTime=true"
-	connection, err := gorm.Open(mysql.New(mysql.Config{
-		DSN:               dsn,
-		DefaultStringSize: 256,
-	}), &gorm.Config{})
+	// dsn := user + ":" + pass + "@" + protocol + "/" + dbname + "?charset=utf8&parseTime=true"
+	// connection, err := gorm.Open(mysql.New(mysql.Config{
+	// 	DSN:               dsn,
+	// 	DefaultStringSize: 256,
+	// }), &gorm.Config{})
+
+	connection, err := gorm.Open(sqlite.Open("gorm.db"), &gorm.Config{})
+	_ = connection.AutoMigrate(&entities.Article{})
 
 	if err != nil {
 		panic("could not connect to the database")
