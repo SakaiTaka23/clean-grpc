@@ -20,10 +20,12 @@ func Connect() *gorm.DB {
 	// }), &gorm.Config{})
 
 	connection, err := gorm.Open(sqlite.Open("gorm.db"), &gorm.Config{})
-	_ = connection.AutoMigrate(&entities.Article{})
-
 	if err != nil {
 		panic("could not connect to the database")
+	}
+	err = connection.AutoMigrate(&entities.Article{})
+	if err != nil {
+		panic("failed to migrate")
 	}
 
 	return connection

@@ -12,7 +12,9 @@ type article struct {
 }
 
 func New(conn *gorm.DB) repository.Article {
-	return &article{}
+	return &article{
+		conn: conn,
+	}
 }
 
 func (a *article) Create(article entities.Article) string {
