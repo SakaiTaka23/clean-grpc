@@ -67,7 +67,7 @@ func (g *ArticleController) UpdateArticle(_ context.Context, req *articlev1.Upda
 }
 
 func convertArticle(articles *[]entities.Article) []*articlev1.Article {
-	pbArticles := make([]*articlev1.Article, len(*articles))
+	var pbArticles []*articlev1.Article
 	for _, article := range *articles {
 		pbArticles = append(pbArticles, &articlev1.Article{
 			Id:    article.ID,

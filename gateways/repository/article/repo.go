@@ -34,7 +34,7 @@ func (a *article) FindOne(ID string) entities.Article {
 
 func (a *article) GetAll() []entities.Article {
 	var articles []entities.Article
-	a.conn.Model(entities.Article{}).Take(&articles)
+	a.conn.Model(entities.Article{}).Find(&articles)
 	return articles
 }
 
