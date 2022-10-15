@@ -28,7 +28,7 @@ func (a *article) Delete(ID string) {
 
 func (a *article) FindOne(ID string) entities.Article {
 	var article entities.Article
-	a.conn.First(&article).Where("id = ?", ID)
+	a.conn.Where("id = ?", ID).First(&article)
 	return article
 }
 
