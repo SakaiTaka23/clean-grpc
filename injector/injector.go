@@ -20,7 +20,7 @@ func injectArticleRepository() repository.Article {
 }
 
 func injectArticlePort() inputport.Article {
-	return article_uc.New(injectArticleRepository())
+	return article_uc.NewArticleInteractor(injectArticleRepository())
 }
 
 func InjectArticleController() *controllers.ArticleController {
