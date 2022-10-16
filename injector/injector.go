@@ -16,7 +16,7 @@ func injectDB() *gorm.DB {
 }
 
 func injectArticleRepository() repository.Article {
-	return article_repo.New(injectDB())
+	return article_repo.NewArticleRepository(injectDB())
 }
 
 func injectArticlePort() inputport.Article {

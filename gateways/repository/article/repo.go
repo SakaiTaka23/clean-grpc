@@ -11,7 +11,7 @@ type article struct {
 	conn *gorm.DB
 }
 
-func New(conn *gorm.DB) repository.Article {
+func NewArticleRepository(conn *gorm.DB) repository.Article {
 	return &article{
 		conn: conn,
 	}
